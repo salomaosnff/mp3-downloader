@@ -4,6 +4,6 @@ const app = new Application()
 
 ;(async () => {
   const results = await app.search(process.argv[2])
-  console.log(await app.download(results))
+  await app.download(results)
   console.log(`Downloads saved in ${app.dir}`)
 })()

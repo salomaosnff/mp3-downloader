@@ -9,12 +9,31 @@ class MusicPleerProvider extends DownloadProvider {
       name: 'MusicPleer'
     })
 
-    this.browser = puppeeter.launch()
+    this.browser = puppeeter.launch({
+      headless: true,
+      args: [
+        "--disable-gpu",
+        "--disable-setuid-sandbox",
+        "--force-device-scale-factor",
+        "--ignore-certificate-errors",
+        "--no-sandbox",
+      ],
+      ignoreHTTPSErrors: true,
+    })
   }
 
   async search (query) {
     const browser = await this.browser
     const page = await browser.newPage()
+    await page.setRequestInterception(true);
+
+    page.on('request', (req) => {
+      if(['image', 'font', 'stylesheet'].includes(req.resourceType())){
+          req.abort();
+      } else {
+        req.continue();
+      }
+    })
 
     await page.goto(`https://musicpleer.media/#!${query}`)
     await page.waitFor('#searchResults ul li a')
