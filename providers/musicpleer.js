@@ -36,7 +36,7 @@ class MusicPleerProvider extends DownloadProvider {
     })
 
     await page.goto(`https://musicpleer.media/#!${query}`)
-    await page.waitFor('#searchResults ul li a')
+    await page.waitFor('#searchResults')
     const results = await page.$$('#searchResults ul li')
 
     return Promise.all(
