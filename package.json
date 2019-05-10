@@ -1,0 +1,28 @@
+{
+  "name": "@salomaosnff/mp3-downloader",
+  "version": "1.0.1",
+  "private": false,
+  "author": {
+    "name": "Salomão Neto",
+    "email": "salomaosnff@yahoo.com",
+    "url": "https://fb.com/frangocatupity"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salomaosnff/mp3-downloader.git"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "mp3": "bin/mp3.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.3",
+    "inquirer": "^6.3.1",
+    "listr": "^0.14.3",
+    "mkdirp": "^0.5.1",
+    "puppeteer": "^1.15.0",
+    "youtube-crawler": "^0.0.3"
+  }
+}
